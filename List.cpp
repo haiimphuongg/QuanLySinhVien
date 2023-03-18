@@ -130,3 +130,4 @@ void Stack::printStack()
 {
 	this->stack.print();
 }
+

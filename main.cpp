@@ -1,13 +1,20 @@
 
-#include "List.h"
+
+#include "SinhVien.h"
 int main()
 {
-	Stack myStack;
-	myStack.push("Hihi");
-	myStack.push("Hehe");
-	myStack.push("Hoho");
-	myStack.pop();
+	QLSinhVien qlsv;
 
-	myStack.printStack();
+	qlsv.inputListSV(3);
+	//cout << endl << qlsv.mean();
+	qlsv.classification();
+	qlsv.printListSV();
+	cout << endl;
+	qlsv.lowerThanMean();
+	cout << endl;
+	qlsv.deleteSV(2);
+	qlsv.printListSV();
+	
 
+	cout << endl << qlsv.mean();
 }
