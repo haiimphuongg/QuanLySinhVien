@@ -57,10 +57,19 @@ void List::erase(int pos)
 		curNode = curNode->next;
 	}
 
-	Node* delNode = curNode->next;
-	curNode->next = delNode->next;
+	if (pos == 0)
+	{
+		Node* tempNode = curNode;
+		head = curNode->next;
+		free(tempNode);
+	}
 
-	free(delNode);
+	else {
+		Node* delNode = curNode->next;
+		curNode->next = delNode->next;
+		free(delNode);
+
+	}
 	count--;
 
 }
@@ -93,4 +102,31 @@ void List::print()
 int List::size()
 {
 	return count;
+}
+
+Stack::Stack()
+{
+	this->stack;
+}
+Stack::Stack(string val) 
+{
+	this->stack.count = 0;
+	this->stack.insert(0, val);
+}
+
+void Stack::push(const string& Element)
+{
+	this->stack.insert(this->stack.count, Element);
+}
+
+string Stack::pop()
+{
+	string first = this->stack.get(0);
+	this->stack.erase(0);
+	return first;
+}
+
+void Stack::printStack()
+{
+	this->stack.print();
 }

@@ -11,7 +11,7 @@ public:
 	~Stack();
 	void push(const int& Element);
 	int pop();
-	void printStack();
+	//void printStack();
 
 private:
 	int* ptr;

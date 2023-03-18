@@ -1,13 +1,13 @@
-#include "Stack.h"
+
 #include "List.h"
 int main()
 {
-	List myList;
-	myList.insert(0, "hihi");
+	Stack myStack;
+	myStack.push("Hihi");
+	myStack.push("Hehe");
+	myStack.push("Hoho");
+	myStack.pop();
 
-	myList.insert(0, "haha");
-	myList.erase(1);			
-	cout << myList.size();
-	myList.print();
+	myStack.printStack();
 
 }

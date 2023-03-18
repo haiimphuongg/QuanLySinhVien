@@ -37,14 +37,14 @@ int Stack::pop()
 	}
 
 }
-
-void Stack::printStack()
-{
-	for (int i = 0; i < size ; i++)
-	{
-		cout << ptr[i] << " ";
-	}
-}
+//
+//void Stack::printStack()
+//{
+//	for (int i = 0; i < size ; i++)
+//	{
+//		cout << ptr[i] << " ";
+//	}
+//}
 
 Stack::~Stack()
 {
