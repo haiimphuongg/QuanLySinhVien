@@ -134,7 +134,7 @@ void SinhVien::inputSV()
 }
 void SinhVien::printSV()
 {
-	cout << mFullName << " - " << mStudentID << " - " << mDateOfBirth << " - " << mGrade[0] << " - " << mGrade[1] << " - " << mGrade[2] << endl;
+	cout << mFullName << " - " << mStudentID << " - " << mDateOfBirth << " - " << mGrade[0] << " - " << mGrade[1] << " - " << mGrade[2] << " - " << mRank << endl;
 }
 
 
@@ -143,21 +143,3 @@ bool SinhVien::isBirthday()
 	return 0;
 }
 
-
-void SinhVien::writeToFile(SinhVien sv, char* file)
-{
-	fstream fout;
-
-	fout.open(file, ios::out | ios::app);
-
-	fout << sv.mFullName << ","
-		<< sv.mStudentID << ","
-		<< sv.mDateOfBirth << ","
-		<< sv.mGrade[0] << ","
-		<< sv.mGrade[1] << ","
-		<< sv.mGrade[2] << endl;
-
-	fout.close();
-
-	return;
-}

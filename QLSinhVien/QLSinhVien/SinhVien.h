@@ -18,7 +18,6 @@ public:
 	void inputSV();
 	void printSV();
 	bool isBirthday();
-	void writeToFile(SinhVien sv, char* file);
 	friend class QLSinhVien;
 
 private:

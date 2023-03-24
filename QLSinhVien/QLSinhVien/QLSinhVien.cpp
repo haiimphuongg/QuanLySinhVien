@@ -44,16 +44,20 @@ float QLSinhVien::mean()
 
 void QLSinhVien::lowerThanMean()
 {
-	char* fileName = new char[20];
-	strcpy(fileName, "LowerThanMean.csv");
+	fstream fout;
+	fout.open("LowerThanMean.csv", ios::out);
 	for (int i = 0; i < mSize; i++)
 	{
 		if (listSV[i].stdAvg() < this->mean()) {
 			listSV[i].printSV();
-			listSV[i].writeToFile(listSV[i], fileName);
+			fout << listSV[i].mFullName << ","
+				<< listSV[i].mStudentID << ","
+				<< listSV[i].mDateOfBirth << ","
+				<< listSV[i].mGrade[0] << ","
+				<< listSV[i].mGrade[1] << ","
+				<< listSV[i].mGrade[2] << endl;
 		}
 	}
-	delete[] fileName;
 }
 
 
@@ -126,19 +130,100 @@ void QLSinhVien::inputListSV(int num)
 void QLSinhVien::printListBirthday()
 {
 
-}// add list birthday
+}
 
 void QLSinhVien::writeToFile(string file)
 {
-	char* fileNameChar = new char[20];
-	strcpy(fileNameChar, file.c_str());
+	fstream fout;
+	fout.open(file, ios::out);
 	for (int i = 0; i < mSize; i++)
-		listSV[i].writeToFile(listSV[i], fileNameChar);
-
-	delete[] fileNameChar;
+		fout << listSV[i].mFullName << ","
+		<< listSV[i].mStudentID << ","
+		<< listSV[i].mDateOfBirth << ","
+		<< listSV[i].mGrade[0] << ","
+		<< listSV[i].mGrade[1] << ","
+		<< listSV[i].mGrade[2] << ","
+		<< listSV[i].mRank << endl;
 	return;
-}// add 
+}
+
 void QLSinhVien::readFromFile(string file)
 {
+	fstream fin;
+	fin.open(file, ios::in);
 
+	int start = 0;
+	int end = 0;
+	int count = 0;
+	int cur = 0;
+	int length = 0;
+	int i = 0; 
+	
+	string tempStr;
+	while (!fin.eof())
+	{
+		mSize++;
+		char* temp = new char[200];
+		fin.getline(temp, 100);
+		i = 0;
+		tempStr = "";
+		length = strlen(temp);
+		while (i < length)
+		{
+			if (temp[i] != ',')
+			{
+				tempStr += temp[i];
+			}
+			
+			else
+			{
+				count++;
+				if (count == 1)
+				{
+					strcpy(listSV[cur].mFullName, tempStr.c_str());
+				}
+				else if (count == 2)
+				{
+					strcpy(listSV[cur].mStudentID, tempStr.c_str());
+				}
+				else if (count == 3)
+				{
+					strcpy(listSV[cur].mDateOfBirth, tempStr.c_str());
+				}
+				else if (count == 4)
+				{
+					listSV[cur].mGrade[0] = atof(tempStr.c_str());
+				}
+				else if (count == 5)
+				{
+					listSV[cur].mGrade[1] = atof(tempStr.c_str());
+				}
+				else if (count == 6)
+				{
+					listSV[cur].mGrade[2] = atof(tempStr.c_str());
+				}
+				tempStr = "";
+
+			}
+
+			if (i + 1 == length)
+			{
+				if (count == 5)
+				{
+					listSV[cur].mGrade[2] = atof(tempStr.c_str());
+				}
+				else if (count == 6)
+				{
+					strcpy(listSV[cur].mRank, tempStr.c_str());
+				}
+			}
+			i++;
+		}
+		count = 0;
+		cur++;
+		delete[] temp;
+	}
+	fin.close();
+
+	
 }

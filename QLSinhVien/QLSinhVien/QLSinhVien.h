@@ -15,7 +15,6 @@ public:
 	float mean();
 	void lowerThanMean();				// add export to file
 	void insertSV(SinhVien&);
-	void deleteSV(int pos);
 	void classification();
 	void printListSV();
 	void inputListSV(int num);
