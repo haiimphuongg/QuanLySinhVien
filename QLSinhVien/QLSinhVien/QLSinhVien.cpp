@@ -49,7 +49,7 @@ void QLSinhVien::lowerThanMean()
 	for (int i = 0; i < mSize; i++)
 	{
 		if (listSV[i].stdAvg() < this->mean()) {
-			listSV[i].printSV();
+			cout << listSV[i];
 			fout << listSV[i].mFullName << ","
 				<< listSV[i].mStudentID << ","
 				<< listSV[i].mDateOfBirth << ","
@@ -113,7 +113,7 @@ void QLSinhVien::printListSV()
 {
 	for (int i = 0; i < mSize; i++)
 	{
-		listSV[i].printSV();
+		cout << listSV[i];
 	}
 }
 
@@ -122,7 +122,7 @@ void QLSinhVien::inputListSV(int num)
 	SinhVien temp;
 	for (int i = 0; i < num; i++)
 	{
-		temp.inputSV();
+		cin >> temp;
 		insertSV(temp);
 		cout << "\n";
 	}
@@ -133,7 +133,7 @@ void QLSinhVien::printListBirthday()
 	for (int i = 0; i < mSize; i++)
 	{
 		if (listSV[i].isBirthday())
-			listSV[i].printSV();
+			cout << listSV[i];
 	}
 }
 

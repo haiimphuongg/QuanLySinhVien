@@ -42,6 +42,7 @@ void Menu()
 		cout << "3. Xep loai sinh vien, in ket qua ra man hinh.\n";
 		cout << "4. Tim cac sinh vien co ngay sinh nhat vao hom nay.\n";
 		cout << "5. Xuat danh sach tu file DanhSachSV.csv\n";
+		cout << "6. Ghi danh sach vao file.\n";
 
 		cin >> n;
 		cin.ignore();
@@ -59,7 +60,7 @@ void Menu()
 			newSV.inputSV();
 			myList.insertSV(newSV);
 			myList.writeToFile("DanhSachSV.csv");
-			cout << "\Da cap nhat vao tap tin DanhSachSV.csv";
+			cout << "\nDa cap nhat vao tap tin DanhSachSV.csv";
 			cout << "\nDanh sach da duoc cap nhat: \n";
 			myList.printListSV();
 		}
@@ -80,6 +81,14 @@ void Menu()
 			myList.readFromFile("DanhSachSV.csv");
 			cout << "\nDanh sach doc tu file: \n";
 			myList.printListSV();
+		}
+		else if (n == 6)
+		{
+			char* fileName = new char[100];
+			cout << "\nNhap ten file ban muon luu du lieu: \n";
+			cin.getline(fileName, 100);
+			myList.printListSV();
+			myList.writeToFile(fileName);
 		}
 		else
 		{

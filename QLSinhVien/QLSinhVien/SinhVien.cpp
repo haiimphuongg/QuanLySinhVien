@@ -132,11 +132,23 @@ void SinhVien::inputSV()
 
 	cin.ignore();
 }
+
+istream& operator>>(istream& in, SinhVien& sv)
+{
+	sv.inputSV();
+	return in;
+}
 void SinhVien::printSV()
 {
 	cout << mFullName << " - " << mStudentID << " - " << mDateOfBirth << " - " << mGrade[0] << " - " << mGrade[1] << " - " << mGrade[2];
 	if (mRank[0] == 'G' || mRank[0] == 'K' || mRank[0] == 'T' || mRank[0] == 'Y') cout << " - " << mRank << endl;
 	else cout << endl;
+}
+
+ostream& operator<<(ostream& out, SinhVien& sv)
+{
+	sv.printSV();
+	return out;
 }
 
 

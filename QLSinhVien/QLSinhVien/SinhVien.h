@@ -19,6 +19,9 @@ public:
 	void printSV();
 	bool isBirthday();
 	friend class QLSinhVien;
+	friend istream& operator>>(istream&, SinhVien&);
+	friend ostream& operator<<(ostream&, SinhVien&);
+
 
 private:
 	char* mFullName;
