@@ -17,7 +17,7 @@ public:
 	SinhVien& operator=(const SinhVien& sv);
 	void inputSV();
 	void printSV();
-	bool isBirthday();
+	bool isBirthday(int curDay, int curMonth);
 	friend class QLSinhVien;
 	friend istream& operator>>(istream&, SinhVien&);
 	friend ostream& operator<<(ostream&, SinhVien&);

@@ -15,6 +15,7 @@ void Menu()
 	while (true)
 	{
 		cin >> n;
+
 		if (n == 1)
 		{
 			cout << "Nhap so luong sinh vien ban muon nhap: ";
@@ -30,6 +31,9 @@ void Menu()
 			cout << "Du lieu da duoc doc!\n";
 			myList.printListSV();
 			break;
+		}
+		else {
+			cout << "Lenh nhap khong hop le!\n";
 		}
 	}
 	
@@ -87,7 +91,7 @@ void Menu()
 			char* fileName = new char[100];
 			cout << "\nNhap ten file ban muon luu du lieu: \n";
 			cin.getline(fileName, 100);
-			myList.printListSV();
+			//myList.printListSV();
 			myList.writeToFile(fileName);
 		}
 		else

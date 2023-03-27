@@ -112,7 +112,7 @@ SinhVien& SinhVien:: operator=(const SinhVien& sv)
 
 void SinhVien::inputSV()
 {
-	cout << "Nhap vo va ten: ";
+	cout << "Nhap ho va ten: ";
 	cin.getline(mFullName, 50);
 
 	cout << "Nhap MSSV: ";
@@ -152,18 +152,8 @@ ostream& operator<<(ostream& out, SinhVien& sv)
 }
 
 
-bool SinhVien::isBirthday()
+bool SinhVien::isBirthday(int curDay, int curMonth)
 {
-	time_t t = time(0);
-	tm* now = localtime(&t);
-
-	char buffer[5];
-	strftime(buffer, 5, "%d%m", now);
-
-	string s = buffer;
-	string curDay = s.substr(0, 2);
-	string curMonth = s.substr(2, 2);
-
 	int start = 0;
 	int end = 0;
 	int i = 0;
@@ -185,7 +175,7 @@ bool SinhVien::isBirthday()
 		}
 		i++;
 	}
-	if (stoi(curDay) == stoi(day) && stoi(curMonth) == stoi(month))
+	if (curDay == stoi(day) && curMonth == stoi(month))
 		return true;
 
 	return false;

@@ -130,11 +130,23 @@ void QLSinhVien::inputListSV(int num)
 
 void QLSinhVien::printListBirthday()
 {
+	time_t t = time(0);
+	tm* now = localtime(&t);
+
+	char buffer[5];
+	strftime(buffer, 5, "%d%m", now);
+
+	string s = buffer;
+	string curDay = s.substr(0, 2);
+	string curMonth = s.substr(2, 2);
+	
 	for (int i = 0; i < mSize; i++)
 	{
-		if (listSV[i].isBirthday())
+		if (listSV[i].isBirthday(stoi(curDay), stoi(curMonth)))
 			cout << listSV[i];
 	}
+
+	cout << "\n[Ngay, thang hien tai: " << curDay << "/" << curMonth << "]\n";
 }
 
 void QLSinhVien::writeToFile(string file)
